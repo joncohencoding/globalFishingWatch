@@ -1,2 +1,2 @@
 # globalFishingWatch
-Ingest Global Fishing Watch API
+Ingest Global Fishing Watch API.
