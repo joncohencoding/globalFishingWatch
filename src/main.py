@@ -17,6 +17,13 @@ def search_by_username():
         print("User not found")
 
 
+def search_by_encounters():
+    client = APIClient()
+    data = client.get_encounters()
+    print(data)
+
+
 if __name__ == '__main__':
     print("Hello world")
-    search_by_username()
+    # search_by_username()
+    search_by_encounters()

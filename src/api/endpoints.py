@@ -13,7 +13,6 @@ HEADERS: Dict[str, str] = {
 DEFAULT_QUERY_PARAMS: Dict[str, any] = {
     "limit": 100,
 }
-
 # Timeout Settings (in seconds)
 TIMEOUT: int = 10
 
