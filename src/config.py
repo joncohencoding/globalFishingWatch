@@ -11,7 +11,7 @@ config: Dict[str, any] = {
     "EVENTS_SEARCH_PATH": "events",
     "VESSELS_SEARCH_PATH": "vessels/search",
 
-    "LIMIT": 2,
+    "LIMIT": 50,
     "OFFSET": 0,
     "BEARER_TOKEN": os.getenv("BEARER_TOKEN")
 

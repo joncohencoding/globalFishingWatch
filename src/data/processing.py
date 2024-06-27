@@ -10,18 +10,13 @@ def parse_vessel_data(data):
     for entry in data.get('entries'):
 
         combined_sources_info = entry.get('combinedSourcesInfo')[0]
-        vessel_id = combined_sources_info.get('vesselId')
-        vessel_id = combined_sources_info.get('shiptypes')[0].get('name')
-        # for self_reported in entry['selfReportedInfo']:
-        #     vessel_info_id = self_reported['id']
-        #     shipname = self_reported['shipname']
-        #     flag = self_reported['flag']
-        #     callsign = self_reported['callsign']
+        vessel_id: str = combined_sources_info.get('shiptypes')[0].get('vesselId')
+        ship_type: str = combined_sources_info.get('shiptypes')[0].get('name')
         for self_reported in entry.get('selfReportedInfo'):
-            vessel_id = self_reported.get('id') if vessel_id is None else vessel_id
-            shipname = self_reported.get('shipname')
-            flag = self_reported.get('flag')
-            callsign = self_reported.get('callsign')
+            vessel_id: str = self_reported.get('id') if vessel_id is None else vessel_id
+            shipname: str = self_reported.get('shipname')
+            flag: str = self_reported.get('flag')
+            callsign: str = self_reported.get('callsign')
 
         vessel = Vessel(
             vessel_id=vessel_id,
@@ -31,5 +26,6 @@ def parse_vessel_data(data):
             callsign=callsign,
             )
         new_vessels.append(vessel)
+        print(vessel)
 
     return new_vessels

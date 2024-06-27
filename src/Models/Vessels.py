@@ -8,4 +8,4 @@ class Vessel:
 
     # What is this?
     def __repr__(self):
-        return f"Vessel(vessel_id={self.vessel_id}, ship_type={self.ship_type}, vessel_info_id={self.vessel_info_id}, shipname={self.shipname}, flag={self.flag}, callsign={self.callsign})"
+        return f"Vessel(vessel_id={self.vessel_id}, ship_type={self.ship_type}, shipname={self.shipname}, flag={self.flag}, callsign={self.callsign})"
