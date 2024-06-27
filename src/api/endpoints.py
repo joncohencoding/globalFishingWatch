@@ -60,7 +60,7 @@ class VesselSearchEndpoint(BaseEndpoint):
         # self.path = "vessels/search"
         self.path = config["VESSELS_SEARCH_PATH"]
         self.params = {
-            "datasets[0]": "public-global-vessel-identity:latest",
+            "datasets[0]": config["VESSELS_DATA_SET"],
             "limit": config["LIMIT"]
         }
         if additional_params:
@@ -70,12 +70,16 @@ class VesselSearchEndpoint(BaseEndpoint):
         return self._get_full_url(self.path)
 
 
-class EventsEndpoint(BaseEndpoint):
+class LoiteringEventsEndpoint(BaseEndpoint):
     # TODO: update the way params are handled
     def __init__(self):
         # ? Is this super init necessary
         super().__init__()
         self.path = config["EVENTS_SEARCH_PATH"]
+        self.params = {
+            "datasets[0]": config["LOITERING_DATA_SET"],
+            "limit": config["LIMIT"]
+        }
 
     def get_url(self):
         return self._get_full_url(self.path)
@@ -84,7 +88,7 @@ class EventsEndpoint(BaseEndpoint):
 def create_endpoint(endpoint_type: str) -> BaseEndpoint:
     endpoint_mapping = {
         "vessel_search": VesselSearchEndpoint(),
-        "event_search": EventsEndpoint(),
+        "event_search": LoiteringEventsEndpoint(),
     }
 
     # TODO: add error caching
