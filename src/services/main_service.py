@@ -16,23 +16,6 @@ def search_vessels_by_country(api_client: APIClient, search_vessel_endpoint: Bas
     params: Dict[str, any] = search_vessel_endpoint.get_params().copy()
     params.update({"query": country_code})
 
-    try:
-        print(search_vessel_endpoint._get_full_url('some_path'))  # This will raise an exception
-    except AttributeError as e:
-        print(f"Error: {e}")
     response = api_client.make_request(search_vessel_endpoint.get_url(), params)
     parse_vessel_data(response)
     print(f"Response: {response}")
-
-
-def create_endpoint(endpoint_type: str) -> BaseEndpoint:
-    endpoint_mapping = {
-        "vessel_search": VesselSearchEndpoint(),
-        "event_search": EventsEndpoint(),
-    }
-
-    # TODO: add error caching
-    endpoint = endpoint_mapping.get(endpoint_type)
-    if endpoint is None:
-        raise ValueError(f"Endpoint type '{endpoint_type}' is not recognized.")
-    return endpoint

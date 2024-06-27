@@ -79,3 +79,16 @@ class EventsEndpoint(BaseEndpoint):
 
     def get_url(self):
         return self._get_full_url(self.path)
+
+
+def create_endpoint(endpoint_type: str) -> BaseEndpoint:
+    endpoint_mapping = {
+        "vessel_search": VesselSearchEndpoint(),
+        "event_search": EventsEndpoint(),
+    }
+
+    # TODO: add error caching
+    endpoint = endpoint_mapping.get(endpoint_type)
+    if endpoint is None:
+        raise ValueError(f"Endpoint type '{endpoint_type}' is not recognized.")
+    return endpoint

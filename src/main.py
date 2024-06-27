@@ -1,6 +1,6 @@
 from api.client import APIClient
-from src.api.endpoints import BaseEndpoint
-from src.services.main_service import create_endpoint, search_vessels_by_country
+from src.api.endpoints import BaseEndpoint, create_endpoint
+from src.services.main_service import search_vessels_by_country
 
 
 if __name__ == '__main__':
