@@ -5,6 +5,7 @@ from typing import Dict
 from src.config import config
 
 
+# TODO: CLEAN UP!!!
 HEADERS: Dict[str, str] = {
     "Content-Type": "application/json",
     "Accept": "application/json",
@@ -22,11 +23,11 @@ ENCOUNTERS_QUERY_PARAMS: Dict[str, any] = {
     # "confidences": [2, 3, 4],
 }
 # Timeout Settings (in seconds)
-TIMEOUT: int = 30
+TIMEOUT: int = config["TIMEOUT"]
 
 # Retry settings
-RETRY_COUNT = 5
-RETRY_BACKOFF_FACTOR = 1
+RETRY_COUNT: int = config["RETRY_COUNT"]
+RETRY_BACKOFF_FACTOR: int = config["RETRY_BACKOFF_FACTOR"]
 
 
 # TODO:  make this abstract
@@ -37,7 +38,7 @@ class BaseEndpoint:
         self.params = base_params if base_params else {}
         self.headers = HEADERS
 
-    # There is probably a cleaner way to do this. DOn't want to accidentally
+    # There is probably a cleaner way to do this. Don't want to accidentally
     # call get_full_url from child classes
     def _get_full_url(self, path) -> str:
         return f"{self.base_url}/{path}"
@@ -78,7 +79,9 @@ class LoiteringEventsEndpoint(BaseEndpoint):
         self.path = config["EVENTS_SEARCH_PATH"]
         self.params = {
             "datasets[0]": config["LOITERING_DATA_SET"],
-            "limit": config["LIMIT"]
+            "limit": config["LIMIT"],
+            "offset": config["OFFSET"],
+            "vessels[]": ["cd9d2f825-577d-b2e1-f771-4f3b61081b7a", "372c7a017-73c5-48c9-6738-48dbda6f4d97"],
         }
 
     def get_url(self):
@@ -88,7 +91,7 @@ class LoiteringEventsEndpoint(BaseEndpoint):
 def create_endpoint(endpoint_type: str) -> BaseEndpoint:
     endpoint_mapping = {
         "vessel_search": VesselSearchEndpoint(),
-        "event_search": LoiteringEventsEndpoint(),
+        "loitering_event_search": LoiteringEventsEndpoint(),
     }
 
     # TODO: add error caching

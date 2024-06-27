@@ -12,12 +12,17 @@ config: Dict[str, any] = {
     "VESSELS_SEARCH_PATH": "vessels/search",
 
     # DATASETS
-    "LOITERING_DATA_SET": "public-global-loitering-identity:latest",
+    "LOITERING_DATA_SET": "public-global-loitering-events:latest",
     "VESSELS_DATA_SET": "public-global-vessel-identity:latest",
 
     "LIMIT": 5,
     "OFFSET": 0,
-    "BEARER_TOKEN": os.getenv("BEARER_TOKEN")
+    "BEARER_TOKEN": os.getenv("BEARER_TOKEN"),
 
+    "TIMEOUT": 300,
+    "RETRY_COUNT": 5,
+    "RETRY_BACKOFF_FACTOR": 1,
+
+    "COUNTRY_CODE_LIST": ["NRU", "CMR"]
 }
 
