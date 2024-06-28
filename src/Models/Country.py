@@ -9,10 +9,16 @@ class Country:
         self.vessels = vessels
         self.average_loitering_encounters = average_loitering_encounters
 
-    # What is this?
     def __repr__(self):
         return (f"\nCountry code: {self.country_code}"
                 f"\nVessels analyzed: {len(self.vessels)}"
                 f"\nAverage loitering events per ship: {self.average_loitering_encounters}"
                 )
-        # return f"Country(country_code={self.country_code}, total_vessels_examined={len(self.vessels)}, average_loitering_encounters={self.average_loitering_encounters})"
+
+    def to_table_row(self):
+        return f"| {self.country_code:<12} | {len(self.vessels):<18} | {self.average_loitering_encounters:<27.2f} |"
+
+    @staticmethod
+    def print_header():
+        print(f"| {'Country Code':<12} | {'Vessel Sample Size':<18} | {'Avg Loitering Events by Ship':<27} |")
+        print("|" + "-" * 14 + "|" + "-" * 20 + "|" + "-" * 29 + "|")

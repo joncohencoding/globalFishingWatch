@@ -81,7 +81,6 @@ class LoiteringEventsEndpoint(BaseEndpoint):
             "datasets[0]": config["LOITERING_DATA_SET"],
             "limit": config["LIMIT"],
             "offset": config["OFFSET"],
-            "vessels[]": ["cd9d2f825-577d-b2e1-f771-4f3b61081b7a", "372c7a017-73c5-48c9-6738-48dbda6f4d97"],
         }
 
     def get_url(self):
