@@ -9,7 +9,7 @@ def parse_vessel_data(data, check_flag: str = None) -> List[Vessel]:
     vessel_id = ship_type = shipname = flag = callsign = None
     for entry in data.get('entries'):
         registry_info = entry.get('registryInfo')
-        if flag is not None:
+        if check_flag is not None:
             flag: str = check_flag
         elif registry_info is not None and len(registry_info) > 0:
             flag = registry_info[0].get('flag')

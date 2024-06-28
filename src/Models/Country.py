@@ -11,4 +11,8 @@ class Country:
 
     # What is this?
     def __repr__(self):
-        return f"Country(country_code={self.country_code}, total_vessels_examined={len(self.vessels)}, average_loitering_encounters={self.average_loitering_encounters})"
+        return (f"\nCountry code: {self.country_code}"
+                f"\nVessels analyzed: {len(self.vessels)}"
+                f"\nAverage loitering events per ship: {self.average_loitering_encounters}"
+                )
+        # return f"Country(country_code={self.country_code}, total_vessels_examined={len(self.vessels)}, average_loitering_encounters={self.average_loitering_encounters})"

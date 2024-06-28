@@ -15,7 +15,7 @@ config: Dict[str, any] = {
     "LOITERING_DATA_SET": "public-global-loitering-events:latest",
     "VESSELS_DATA_SET": "public-global-vessel-identity:latest",
 
-    "LIMIT": 5,
+    "LIMIT": 2,
     "OFFSET": 0,
     "BEARER_TOKEN": os.getenv("BEARER_TOKEN"),
 

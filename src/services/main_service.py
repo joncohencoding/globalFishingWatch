@@ -28,6 +28,7 @@ def analyze_loitering_by_country(api_client: APIClient, country_code_list: List[
 
     # Display loitering information
     for country in country_list:
-        print(f"\nCountry code: {country.country_code}")
-        print(f"Vessels analyzed: {len(country.vessels)}")
-        print(f"Average loitering events per ship: {country.average_loitering_encounters}\n")
+        # print(f"\nCountry code: {country.country_code}")
+        # print(f"Vessels analyzed: {len(country.vessels)}")
+        # print(f"Average loitering events per ship: {country.average_loitering_encounters}\n")
+        print(country)
