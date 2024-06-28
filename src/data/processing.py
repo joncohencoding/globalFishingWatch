@@ -9,23 +9,23 @@ def parse_vessel_data(data, check_flag: str = None) -> List[Vessel]:
     vessel_id = ship_type = shipname = flag = callsign = None
     for entry in data.get('entries'):
         registry_info = entry.get('registryInfo')
-        if check_flag is not None and len(registry_info) > 0:
-            flag: str = registry_info[0].get('flag') if registry_info[0].get('flag') == check_flag else "FLAG_MISMATCH"
-        elif len(registry_info) > 0:
+        if flag is not None:
+            flag: str = check_flag
+        elif registry_info is not None and len(registry_info) > 0:
             flag = registry_info[0].get('flag')
         else:
-            flag = None
+            flag = "NO_DATA"
 
         combined_sources_info = entry.get('combinedSourcesInfo')
-        if len(combined_sources_info) > 0:
+        if combined_sources_info is not None and len(combined_sources_info) > 0:
             vessel_id: str = combined_sources_info[0].get('shiptypes')[0].get('vesselId')
             ship_type: str = combined_sources_info[0].get('shiptypes')[0].get('name')
 
-        self_reported = entry.get('selfReportedInfo')
-        if len(self_reported) > 0:
-            vessel_id: str = self_reported[0].get('id') if vessel_id is None else vessel_id
-            shipname: str = self_reported[0].get('shipname')
-            callsign: str = self_reported[0].get('callsign')
+        self_reported_info = entry.get('selfReportedInfo')
+        if self_reported_info is not None and len(self_reported_info) > 0:
+            vessel_id: str = self_reported_info[0].get('id') if vessel_id is None else vessel_id
+            shipname: str = self_reported_info[0].get('shipname')
+            callsign: str = self_reported_info[0].get('callsign')
 
         vessel = Vessel(
             vessel_id=vessel_id,

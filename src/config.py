@@ -23,6 +23,6 @@ config: Dict[str, any] = {
     "RETRY_COUNT": 5,
     "RETRY_BACKOFF_FACTOR": 1,
 
-    "COUNTRY_CODE_LIST": ["NRU", "CMR"]
+    "COUNTRY_CODE_LIST": ["NRU", "CMR", "USA", "SAU", "COL", "KHM", "RUS"]
 }
 
