@@ -62,7 +62,7 @@ def get_average_loitering_events(vessels: List[Vessel]) -> float:
     print('--------------------------')
     if total_vessels > 0:
         average_loitering_events = round(total_loitering_events/total_vessels, 2)
-        print(f'Average loitering events: {round(average_loitering_events)}')
+        print(f'Average loitering events for {vessels[0].flag}: {round(average_loitering_events)}')
     else:
         average_loitering_events = -1
         print("No vessels found")
