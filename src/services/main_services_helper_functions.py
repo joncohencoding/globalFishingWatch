@@ -4,6 +4,10 @@ from typing import Dict, List
 from src.api.client import APIClient
 from src.Models.Vessel import Vessel
 from src.data.processing import parse_vessel_data, parse_loitering_data
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 async def get_vessels_by_country(api_client: APIClient, country_code: str) -> List[Vessel]:
@@ -55,17 +59,16 @@ def get_average_loitering_events(vessels: List[Vessel]) -> float:
     total_vessels: int = len(vessels)
     total_loitering_events: int = 0
     for vessel in vessels:
-        print(f'{vessel.vessel_id}: {vessel.total_loitering_events}')
+        logger.debug(f'{vessel.vessel_id}: {vessel.total_loitering_events}')
         total_loitering_events += vessel.total_loitering_events
         total_vessels += 1
 
-    print('--------------------------')
     if total_vessels > 0:
         average_loitering_events = round(total_loitering_events/total_vessels, 2)
-        print(f'Average loitering events for {vessels[0].flag}: {round(average_loitering_events)}')
+        logger.info(f'Average loitering events for {vessels[0].flag}: {round(average_loitering_events)}')
     else:
         average_loitering_events = -1
-        print("No vessels found")
+        logger.info("No vessels found")
 
     return average_loitering_events
 

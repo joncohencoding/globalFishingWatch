@@ -24,14 +24,14 @@ class APIClient:
 
     @staticmethod
     def make_request_sync(query_url: str, params: Dict[str, any] = None) -> Optional[requests.Response]:
-        print(f"Requesting data...")
+        logger.debug(f"Requesting data...")
         response = requests.get(query_url, params=params, headers=HEADERS, timeout=TIMEOUT)
-        print(f"Generated URL: {response.url}")
+        logger.debug(f"Generated URL: {response.url}")
         try:
             response.raise_for_status()
         except requests.exceptions.HTTPError as error:
-            print(f"HTTP error occurred: {error}")
-            print(f"Response text: {response.text}")
+            logger.error(f"HTTP error occurred: {error}")
+            logger.error(f"Response text: {response.text}")
             raise
         return response.json() if response else None
 
@@ -64,8 +64,3 @@ class APIClient:
             tasks = [self.fetch(session, item['url'], item['params']) for item in url_params_list]
             return await asyncio.gather(*tasks)
 
-# async def fetch(self, status, query_url, params):
-#     async with self.make_request(query_url, params) as req:
-#         return await req.text
-#
-# async def fetch_all(self, api_client, status, query_url, params):

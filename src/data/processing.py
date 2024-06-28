@@ -3,6 +3,11 @@ from typing import List
 
 from src.Models.Vessel import Vessel
 
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 def parse_vessel_data(data, check_flag: str = None) -> List[Vessel]:
     new_vessels: List[Vessel] = []
@@ -35,7 +40,7 @@ def parse_vessel_data(data, check_flag: str = None) -> List[Vessel]:
             callsign=callsign,
             )
         new_vessels.append(vessel)
-        print(vessel)
+        logger.debug(vessel)
 
     return new_vessels
 
