@@ -15,7 +15,7 @@ config: Dict[str, any] = {
     "LOITERING_DATA_SET": "public-global-loitering-events:latest",
     "VESSELS_DATA_SET": "public-global-vessel-identity:latest",
 
-    "LIMIT": 2,
+    "LIMIT": 50,
     "OFFSET": 0,
     "BEARER_TOKEN": os.getenv("BEARER_TOKEN"),
 
@@ -23,6 +23,6 @@ config: Dict[str, any] = {
     "RETRY_COUNT": 5,
     "RETRY_BACKOFF_FACTOR": 1,
 
-    "COUNTRY_CODE_LIST": ["NRU", "CMR", "USA", "SAU", "COL", "KHM", "RUS"]
+    "COUNTRY_CODE_LIST": ["NRU"]
 }
 
