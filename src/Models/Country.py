@@ -16,9 +16,9 @@ class Country:
                 )
 
     def to_table_row(self):
-        return f"| {self.country_code:<12} | {len(self.vessels):<18} | {self.average_loitering_encounters:<27.2f} |"
+        return f"| {self.country_code:<12} | {len(self.vessels):<18} | {self.average_loitering_encounters:<28} |"
 
     @staticmethod
     def print_header():
         print(f"| {'Country Code':<12} | {'Vessel Sample Size':<18} | {'Avg Loitering Events by Ship':<27} |")
-        print("|" + "-" * 14 + "|" + "-" * 20 + "|" + "-" * 29 + "|")
+        print("|" + "-" * 14 + "|" + "-" * 20 + "|" + "-" * 30 + "|")
